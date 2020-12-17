@@ -1,6 +1,6 @@
 class Dog(object):
     def work(self):
-        pass
+        print('指哪打哪...')
 
 
 
