@@ -13,3 +13,11 @@ if __name__ == '__main__':
     # 发送数据
     tcp_client_socket.send(send_data)
     # 接收数据，这次接收的数据最大字节数是1024
+    recv_data = tcp_client_socket.recv(1024)
+    # 返回的直接之服务端程序发送的二进制数据
+    print(recv_data)
+    # 对数据进行解码
+    recv_content = recv_data.decode('gbk')
+    print('接收服务端的数据为：', recv_content)
+    # 关闭套接字
+    tcp_client_socket.close()
