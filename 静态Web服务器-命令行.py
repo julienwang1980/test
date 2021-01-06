@@ -97,6 +97,11 @@ def main():
         print('执行命令如下：python3 xxx.py 8000')
         return
 
+    # 判读字符串是否都是数字组成
+    if not sys.argv[1].isdigit():
+        print('执行命令如下：python3 xxx.py 8000')
+        return
+
     # 获取终端命令行参数
     port = int(sys.argv[1])
     # 创建Web服务器对象
