@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>            
+        <meta charset="UTF-8">
+        <title>网页标题</title>
+    </head>
+    <body>
+        <div>
+            <img src="images/pic.jpg" alt="图片">
+            <a href="http://www.baidu.com">百度网</a>
+        </div>
+
+        <!-- ul标签定义无序列表 -->
+        <ul>
+            <!-- li标签定义列表项目 -->
+            <li>列表标题一</li>
+            <li>列表标题二</li>
+            <li>列表标题三</li>
+        </ul>
+
+        <!-- ol标签定义有序列表 -->
+        <ol>
+            <!-- li标签定义列表项目 -->
+            <li><a href="#">列表标题一</a></li>
+            <li><a href="#">列表标题二</a></li>
+            <li><a href="#">列表标题三</a></li>
+        </ol>
+        <table>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>18</td>
+            </tr>
+        </table>
+
+        <form action="https://www.baidu.com" method="GET">
+            <p>
+                <label>姓名：</label><input type="text" name="username" value="11">
+            </p>
+            <p>
+                <label>密码：</label><input type="password" name="password" />
+            </p>
+            <p>
+                <label>性别：</label>
+                <input type="radio" name="gender" value="0"> 男
+                <input type="radio" name="gender" value="1"> 女
+            </p>
+            <p>
+                <label>爱好：</label>
+                <input type="checkbox" name="like" value="sing"> 唱歌
+                <input type="checkbox" name="like" value="run"> 跑步
+                <input type="checkbox" name="like" value="swiming"> 游泳
+            </p>
+            <p>
+                <label>照片：</label>
+                <input type="file" name="person_pic">
+            </p>
+            <p>
+                <label>个人描述：</label>
+                <textarea name="about"></textarea>
+            </p>
+            <p>
+                <label>籍贯：</label>
+                <select name="site">
+                    <option value="0">北京</option>
+                    <option value="1">上海</option>
+                    <option value="2">广州</option>
+                    <option value="3">深圳</option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" name="" value="提交">
+                <input type="reset" name="" value="重置">
+            </p>
+        </form>
+
+        <style type="text/css">
+            p{
+                color: red;
+            }
+        </style>
+        
+        <div>hello</div>
+        <p>hello</p>
+
+        <style type="text/css">
+            .blue{color:blue}
+            .big{font-size:20px}
+            .box{width:100px;height:100px;background:gold} 
+        </style>
+        
+        <div class="blue">这是一个div</div>
+        <h3 class="blue big box">这是一个标题</h3>
+        <p class="blue box">这是一个段落</p>
+
+        <style type="text/css">
+            div p{
+                color: red;
+            }
+            .con{width:300px;height:80px;background:green}
+            .con span{color:red}
+            .con .pink{color:pink}
+            .con .gold{color:gold}    
+        </style>
+        
+        <div>
+            <p>hello</p>
+        </div>
+        
+        <div class="con">
+            <span>哈哈</span>
+            <a href="#" class="pink">百度</a>
+            <a href="#" class="gold">谷歌</a>
+        </div>
+        <span>你好</span>
+        <a href="#" class="pink">新浪</a>
+    </body>
+</html>
