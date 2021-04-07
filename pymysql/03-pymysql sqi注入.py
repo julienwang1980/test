@@ -17,13 +17,14 @@ if __name__ == '__main__':
                             user='root',
                             password='1010',
                             port=3306,
-                            database='jing_dong',
+                            database='python',
                             charset='utf8')
 
     # 3.获取游标，目的就是要执行sql语句
     cursor = conn.cursor()
     # 准备sql,之前在MySQL客户端如何编写sql,在python程序里还怎么编写
-    sql = "select * from goods;"
+    sql = "select * from students where name='%s';" %"黄蓉' or 1=1 or '"
+    print(sql)
 
     # 4.执行sql语句
     cursor.execute(sql)

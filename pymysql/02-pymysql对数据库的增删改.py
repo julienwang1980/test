@@ -17,26 +17,27 @@ if __name__ == '__main__':
                             user='root',
                             password='1010',
                             port=3306,
-                            database='jing_dong',
+                            database='python',
                             charset='utf8')
 
     # 3.获取游标，目的就是要执行sql语句
     cursor = conn.cursor()
     # 准备sql,之前在MySQL客户端如何编写sql,在python程序里还怎么编写
-    sql = "select * from goods;"
+    # 对数据表完成添加、删除、修改操作，需要把修改的数据提交到数据库
+    # sql = "insert into classes(name) value('python50');"
+    # sql = "update classes set name = 'python45' where id=4;"
+    sql = "delete from classes where id=4;"
 
-    # 4.执行sql语句
-    cursor.execute(sql)
-    # 获取查询结果
-    # row = cursor.fetchone()
-    # print(row)
-    # 返回的数据类型是一个元组,其中元组里面的每条数据还是元组
-    result = cursor.fetchall()
-    for row in result:
-        print(row)
-
-    # 5.关闭游标
-    cursor.close()
-
-    # 6.关闭连接
-    conn.close()
+    try:
+        # 4.执行sql语句
+        cursor.execute(sql)
+        # 提交修改的数据到数据库
+        conn.commit()
+    except Exception as e:
+        # 对修改的数据进行撤销，表示数据回滚（回到没有修改数据之前的状态）
+        conn.rollback()
+    finally:
+        # 5.关闭游标
+        cursor.close()
+        # 6.关闭连接
+        conn.close()
