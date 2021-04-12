@@ -27,6 +27,6 @@ def comment():
 # comment = decorator(comment)
 
 # 调用方式不变
-comment()
+# comment()
 
 # 装饰器的执行时机:当当前模块加载完成以后,装饰器会立即执行,对已有函数进行装饰
