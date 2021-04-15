@@ -141,11 +141,13 @@ def center():
         file_data = file.read()
     # 2. 查询数据库，模板里面的模板变量（{%content%}）替换成以后从数据库里面查询的数据
 
-    # web框架处理后的数据
-    # 获取当前时间
-    data = time.ctime()
+    # # web框架处理后的数据
+    # # 获取当前时间
+    # data = time.ctime()
+    # response_body = file_data.replace("{%content%}", data)
 
-    response_body = file_data.replace("{%content%}", data)
+    response_body = file_data.replace("{%content%}", "")
+
     # 这里返回的是元组
     return status, response_header, response_body
 
@@ -174,7 +176,7 @@ def handle_request(env):
         if request_path == path:
             # 找到了指定路由，执行对应的处理函数
             result = func()
-            return  result
+            return result
     else:
         # 没有动态资源数据，返回404状态信息
         result = not_found()
@@ -198,5 +200,5 @@ def handle_request(env):
     #     return result
 
 if __name__ == '__main__':
-    center_data()
-    # print(route_list)
+    # center_data()
+    print(route_list)
