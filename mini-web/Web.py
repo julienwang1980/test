@@ -1,6 +1,15 @@
 import socket
 import threading
 import framework
+import logging
+import sys
+
+# 在程序入口模块，设置logging日志的配置信息，只配置一次，整个程序都可以使用，好比单例
+logging.basicConfig(level=logging.DEBUG,
+                    format="%(asctime)s-%(filename)s[lineno:%(lineno)d]-%(levelname)s-%(message)s",
+                    filename="log.txt",
+                    filemode="a")
+
 
 # 定义Web服务器类
 class HttpWebServer(object):
@@ -43,6 +52,7 @@ class HttpWebServer(object):
         # 判断是否是动态资源请求，以后把后缀是.html的请求任务是动态资源请求
         if request_path.endswith(".html"):
             """动态资源请求"""
+            logging.info("动态资源请求地址：" + request_path)
             # 动态资源请求找web框架进行处理，需要把请求参数给web框架
             # 准备给web框架的参数信息，都要放到字典里面
             env = {
@@ -74,6 +84,7 @@ class HttpWebServer(object):
 
         else:
             """静态资源请求"""
+            logging.info("静态资源请求地址：" + request_path)
             try:
                 # 动态打开指定文件
                 with open('static' + request_path, 'rb') as file:
@@ -125,21 +136,23 @@ class HttpWebServer(object):
 
 # 程序入口函数
 def main():
-    # print(sys.argv)
-    # # 判断命令行参数是否等于2
-    # if len(sys.argv) != 2:
-    #     print('执行命令如下：python3 xxx.py 8000')
-    #     return
-    #
-    # # 判读字符串是否都是数字组成
-    # if not sys.argv[1].isdigit():
-    #     print('执行命令如下：python3 xxx.py 8000')
-    #     return
-    #
-    # # 获取终端命令行参数
-    # port = int(sys.argv[1])
+    print(sys.argv)
+    # 判断命令行参数是否等于2
+    if len(sys.argv) != 2:
+        print('执行命令如下：python3 xxx.py 8000')
+        logging.warning("在终端启动程序参数的个数不等于2！")
+        return
+
+    # 判读字符串是否都是数字组成
+    if not sys.argv[1].isdigit():
+        print('执行命令如下：python3 xxx.py 8000')
+        logging.warning("在终端启动程序参数的类型不是数字字符串！")
+        return
+
+    # 获取终端命令行参数
+    port = int(sys.argv[1])
     # 创建Web服务器对象
-    web_server = HttpWebServer(8000)
+    web_server = HttpWebServer(port)
     # 启动Web服务器进行工作
     web_server.start()
 

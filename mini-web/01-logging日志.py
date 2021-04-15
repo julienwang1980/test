@@ -10,7 +10,9 @@ import logging
 # %(levelname)s 表示日志级别
 # %(message)s 表示日志信息
 logging.basicConfig(level=logging.DEBUG,
-                    format="%(asctime)s-%(filename)s[lineno:%(lineno)d]-%(levelname)s-%(message)s")
+                    format="%(asctime)s-%(filename)s[lineno:%(lineno)d]-%(levelname)s-%(message)s",
+                    filename="log.txt",
+                    filemode="a")
 
 
 

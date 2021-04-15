@@ -2,6 +2,7 @@
 import time
 import pymysql
 import json
+import logging
 
 # 路由列表，列表里面的每一天记录都是一个路由
 route_list = []
@@ -180,6 +181,7 @@ def handle_request(env):
     else:
         # 没有动态资源数据，返回404状态信息
         result = not_found()
+        logging.error("没有设置相关的路由信息：" + request_path)
         # 把处理后的结果返回给web服务器使用，让web服务器拼接响应报文时使用
         return result
 
